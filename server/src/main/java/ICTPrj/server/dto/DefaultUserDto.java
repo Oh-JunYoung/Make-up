@@ -8,19 +8,15 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class DefaultUserDto {
     private Long id;
     private String nickname;
-    private String password;
-    private String email;
     private String profile;
 
-    public static UserDto of(User user, String filePrefix){
-        return UserDto.builder()
+    public static DefaultUserDto of(User user, String filePrefix){
+        return DefaultUserDto.builder()
                 .id(user.getId())
-                .email(user.getEmail())
                 .nickname(user.getNickname())
-                .password(user.getPassword())
                 .profile(filePrefix + user.getProfile())
                 .build();
     }

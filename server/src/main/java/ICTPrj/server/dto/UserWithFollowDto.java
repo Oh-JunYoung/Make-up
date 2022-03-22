@@ -3,25 +3,27 @@ package ICTPrj.server.dto;
 import ICTPrj.server.domain.entity.User;
 import lombok.*;
 
-@Setter
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserWithFollowDto {
     private Long id;
     private String nickname;
-    private String password;
     private String email;
     private String profile;
+    private Long following;
+    private Long follower;
 
-    public static UserDto of(User user, String filePrefix){
-        return UserDto.builder()
+    public static UserWithFollowDto of(User user, Long following, Long follower, String filePrefix){
+        return UserWithFollowDto.builder()
                 .id(user.getId())
-                .email(user.getEmail())
                 .nickname(user.getNickname())
-                .password(user.getPassword())
+                .email(user.getEmail())
                 .profile(filePrefix + user.getProfile())
+                .following(following)
+                .follower(follower)
                 .build();
     }
 }

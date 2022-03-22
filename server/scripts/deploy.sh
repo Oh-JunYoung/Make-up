@@ -2,7 +2,8 @@
 
 DEPLOY_PATH=/home/ec2-user/action/
 echo "> build 시작" >> /home/ec2-user/action/deploy.log
-cd DEPLOY_PATH
+echo "data now : $(date +%Y)-$(date +%m)-$(date +%d) $(date +%H):$(date +%M):$(date +%S)" >> /home/ec2-user/action/deploy.log
+cd $DEPLOY_PATH
 ./gradlew build
 
 BUILD_JAR=$(ls /home/ec2-user/action/build/libs/*.jar)

@@ -10,15 +10,16 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class File {
+public class Follow {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String url;
+    @ManyToOne
+    @JoinColumn(name="follower")
+    private User follower;
 
     @ManyToOne
-    @JoinColumn(name = "Post_id")
-    private Post post;
+    @JoinColumn(name="following")
+    private User following;
 }
